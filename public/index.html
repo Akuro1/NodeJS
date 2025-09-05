@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse AI - Asistente Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h1>Eclipse AI</h1>
+                </div>
+                <div class="header-controls">
+                    <button class="btn-icon" id="statsBtn" title="Estadísticas">
+                        <i class="fas fa-chart-bar"></i>
+                    </button>
+                    <button class="btn-icon" id="settingsBtn" title="Configuración">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                    <button class="btn-icon" id="historyBtn" title="Historial">
+                        <i class="fas fa-history"></i>
+                    </button>
+                    <button class="btn-icon" id="logoutBtn" title="Cerrar Sesión">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-content">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Chat Inteligente</h3>
+                        <p>Conversa con Eclipse AI usando procesamiento de lenguaje natural avanzado</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Búsqueda Web</h3>
+                        <p>Acceso a información actualizada de internet en tiempo real</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Análisis inteligente de texto y reconocimiento de patrones</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3>Asistencia de Código</h3>
+                        <p>Ayuda con programación en múltiples lenguajes</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Chat Area -->
+            <section class="chat-area">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="welcome-message">
+                            <div class="ai-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <h2>¡Bienvenido a Eclipse AI!</h2>
+                                <p>Soy tu asistente inteligente con capacidades avanzadas de IA, machine learning y acceso a internet. ¿En qué puedo ayudarte hoy?</p>
+                                <div class="quick-actions">
+                                    <button class="quick-btn" data-action="Explícame qué puedes hacer">
+                                        <i class="fas fa-info-circle"></i>
+                                        ¿Qué puedes hacer?
+                                    </button>
+                                    <button class="quick-btn" data-action="Ayúdame con código JavaScript">
+                                        <i class="fas fa-code"></i>
+                                        Ayuda con código
+                                    </button>
+                                    <button class="quick-btn" data-action="Buscar información sobre inteligencia artificial">
+                                        <i class="fas fa-search"></i>
+                                        Búsqueda web
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <div class="input-container">
+                            <button class="btn-icon" id="attachBtn" title="Adjuntar archivo">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <input type="file" id="fileInput" style="display: none;" accept=".txt,.pdf,.doc,.docx">
+                            <input type="text" id="messageInput" placeholder="Escribe tu mensaje aquí..." maxlength="1000">
+                            <button class="btn-icon" id="voiceBtn" title="Mensaje de voz">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="btn-send" id="sendBtn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="input-info">
+                            <span id="charCount">0/1000</span>
+                            <span class="typing-indicator" id="typingIndicator" style="display: none;">
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                <i class="fas fa-circle"></i>
+                                Eclipse AI está escribiendo...
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modals -->
+        <!-- Stats Modal -->
+        <div class="modal" id="statsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-chart-bar"></i> Estadísticas de Eclipse AI</h2>
+                    <button class="modal-close" data-modal="statsModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="statsContent">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Cargando estadísticas...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- History Modal -->
+        <div class="modal" id="historyModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-history"></i> Historial de Conversaciones</h2>
+                    <button class="modal-close" data-modal="historyModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="historyContent">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Cargando historial...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div class="modal" id="settingsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2><i class="fas fa-cog"></i> Configuración</h2>
+                    <button class="modal-close" data-modal="settingsModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="setting-group">
+                        <label>Tema</label>
+                        <select id="themeSelect">
+                            <option value="dark">Oscuro</option>
+                            <option value="light">Claro</option>
+                            <option value="auto">Automático</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>Tamaño de fuente</label>
+                        <select id="fontSizeSelect">
+                            <option value="small">Pequeño</option>
+                            <option value="medium" selected>Mediano</option>
+                            <option value="large">Grande</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="soundsCheckbox" checked>
+                            Sonidos de notificación
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <label>
+                            <input type="checkbox" id="animationsCheckbox" checked>
+                            Animaciones
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Panel -->
+        <div class="analysis-panel" id="analysisPanel" style="display: none;">
+            <div class="panel-header">
+                <h3><i class="fas fa-brain"></i> Análisis de Texto</h3>
+                <button class="panel-close" id="closePanelBtn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="panel-content" id="analysisContent">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-moon fa-spin"></i>
+            <p>Eclipse AI procesando...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

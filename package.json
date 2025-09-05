@@ -1,0 +1,41 @@
+{
+  "name": "eclipse-ai",
+  "version": "1.0.0",
+  "description": "Eclipse AI - Una IA completa con interfaz gráfica y capacidades avanzadas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "ai",
+    "machine-learning",
+    "web-interface",
+    "intelligent-assistant"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^22.13.11",
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "body-parser": "^2.2.0",
+    "cheerio": "^1.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.0",
+    "morgan": "^1.10.1",
+    "multer": "^2.0.2",
+    "natural": "^8.1.0",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.6",
+    "openai": "^5.19.1",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.1.0"
+  }
+}
